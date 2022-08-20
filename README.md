@@ -22,7 +22,7 @@
 
 ##  介绍 
 
-用gopacket 实现http流量劫持，代码寥寥，甚是简洁  
+用gopacket 实现http流量劫持，代码寥寥数行，甚是简洁  
 
 ## 编译  
 ```shell
@@ -33,9 +33,12 @@ sudo ./gofake
 
 ## 效果  
 - 劫持前  
+访问web站点：  
 ![alt text](imgs/access.png "Normal Access") 
 
 - 劫持后  
-![alt text](imgs/access_hijack.png "Access Hijack") 
+启动`gofake`后再访问：  
+![alt text](imgs/access_hijack.png "Access Hijack")   
+
 
 
