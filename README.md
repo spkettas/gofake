@@ -1,7 +1,7 @@
 ## gofake
 
 <div align="center">
-  <h1><code>raw_proxy</code></h1>
+  <h1><code>gofake</code></h1>
   <p>
     <a href="https://img.shields.io/badge/version-1.0.0-blue" alt="version">
       <img src="https://img.shields.io/badge/version-1.0.0-blue"/>
@@ -32,12 +32,10 @@ sudo ./gofake
 ```
 
 ## 效果  
-- 劫持前  
-访问web站点：  
+- 正常访问web站点  
 ![alt text](imgs/access.png "Normal Access") 
 
-- 劫持后  
-启动`gofake`后再访问：  
+- 启动`gofake`后再访问  
 ![alt text](imgs/access_hijack.png "Access Hijack")   
 
 
